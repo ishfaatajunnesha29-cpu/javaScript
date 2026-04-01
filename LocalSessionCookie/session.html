@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Session Counter</title>
+</head>
+<style>
+  body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f9f9f9, #ffe6f0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h2 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#count {
+  color: #ff4081;
+  font-weight: bold;
+}
+
+button {
+  background: #ff4081;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #e91e63;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+</style>
+<body>
+
+<h2>Counter: <span id="count">0</span></h2>
+<button onclick="incrementCounter()">Click Me</button>
+
+<script>
+  
+  let count = sessionStorage.getItem("counter");
+
+  if (count === null) 
+  {
+    count = 0;
+  } else 
+  {
+    count = parseInt(count);
+  }
+
+  
+  document.getElementById("count").textContent = count;
+
+  function incrementCounter() 
+  {
+    count++;
+    sessionStorage.setItem("counter", count);
+    document.getElementById("count").textContent = count;
+  }
+</script>
+
+</body>
+</html>
