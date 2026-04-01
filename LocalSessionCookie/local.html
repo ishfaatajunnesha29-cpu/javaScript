@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LocalStorage Example</title>
+</head>
+<style>
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: oldlace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container 
+        {
+          background: bisque;
+          border-radius: 15px;
+          padding: 30px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+          width: 350px;
+          text-align: center;
+        }
+
+        input[type="text"] 
+        {
+            width: 90%;
+            background: rgb(228, 167, 187);
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: mediumvioletred;
+            font-size: 28px;
+            text-align: right;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        }
+        button 
+        {
+            width: 65px;
+            height: 60px;
+            margin: 5px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            transition: all 0.2s ease;
+           
+           
+
+        }
+        #save 
+        {
+            background: green;
+             margin-left: 10px;
+             margin-top: 10px;
+        }
+
+        #show 
+        {
+            background: blue;
+        }
+
+        .buttons 
+        {
+          display: inline-block; 
+          margin-top: 10px;   
+        }
+
+        #display 
+        {
+            
+          margin-top: 20px;
+          font-size: 24px;
+          color: mediumvioletred;
+          font-weight: bold;
+        }
+
+
+</style>
+<body>
+  <div class="container">
+    <form>
+      <input type="text" id="name" placeholder="Enter your name"/><br><br>
+      <button type="button" onclick="saveName()" id="save">Save</button>
+      <button type="button" onclick="showName()" id="show">Show</button>
+    </form>
+      <p id="display"></p>
+  </div>
+
+
+  <script>
+    function saveName() {
+      const name = document.getElementById("name").value;
+      localStorage.setItem("username", name);
+      alert("Name saved!");
+    }
+
+    function showName() {
+      const storedName = localStorage.getItem("username");
+      if (storedName) {
+        document.getElementById("display").innerText = "Hello, " + storedName;
+      }
+    }
+
+   
+    window.onload = displayStoredName;
+  </script>
+</body>
+</html>
